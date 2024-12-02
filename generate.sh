@@ -23,16 +23,12 @@ if ! command -v protoc-gen-go &> /dev/null; then
   go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
 fi
 
-# Define the input .proto file and output directory
-PROTO_FILE="proto/database_operations.proto"
-OUTPUT_DIR="proto"
-
-# Ensure the output directory exists
-mkdir -p $OUTPUT_DIR
-
-# Run protoc to generate Go code
-echo "Running protoc for $PROTO_FILE..."
-protoc --go_out=$OUTPUT_DIR --go_opt=paths=source_relative $PROTO_FILE
+protoc -I ./proto \
+       --go_out=./db-annotations \
+       --go_opt=paths=source_relative \
+       --go-grpc_out=./db-annotations \
+       --go-grpc_opt=paths=source_relative \
+       ./proto/database_operations.proto
 
 echo "Protobuf generation completed successfully!"
 
