@@ -1,4 +1,4 @@
-module github.com/imran31415/proto-db-annotations
+module github.com/imran31415/protobuf-db
 
 go 1.23.0
 
