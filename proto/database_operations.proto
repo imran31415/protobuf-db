@@ -66,20 +66,16 @@ extend google.protobuf.FieldOptions {
 
   // The update action for the column
   DbUpdateAction db_update_action = 50008;
-  repeated string db_composite_primary_key = 50009; // Composite primary keys
   string db_foreign_key_table = 50010; // Referenced table
   string db_foreign_key_column = 50011; // Referenced column
   DbForeignKeyAction db_on_delete = 50012; // Action on delete
   DbForeignKeyAction db_on_update = 50013; // Action on update
-  repeated string db_composite_index = 50014; // Composite index definitions
   // Attributes for numeric types (e.g., AUTO_INCREMENT)
   bool db_auto_increment = 50015;
   // Precision and scale for decimal types
   int32 db_precision = 50016; // Total number of digits
   int32 db_scale = 50017;     // Number of digits after the decimal point
 
-  // General CHECK constraints (optional, if needed)
-  repeated string db_check_constraint = 50019;
   // Character set for the column
   string db_character_set = 50020;
 
@@ -92,6 +88,9 @@ extend google.protobuf.FieldOptions {
 // Add a new message-level extension for composite unique constraints
 extend google.protobuf.MessageOptions {
   repeated string db_unique_constraint = 50001; // Composite unique constraints
+  repeated string db_composite_primary_key = 50009; // Composite primary keys
+  repeated string db_composite_index = 50014; // Composite index definitions
+  repeated string db_check_constraint = 50019;
 }
 
 

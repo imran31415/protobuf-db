@@ -3,7 +3,11 @@ This package provides protobuf extension annotations.  These annotations allow u
 
 ### Disclaimer: This project is in prototype/conceptual phase. not meant to be used in production. 
 
-## Support:
+## Build:
+
+````bash
+./generate.sh  # builds protos 
+```
 
 ## Quick start:
 
@@ -80,7 +84,7 @@ message User {
 
 ## Using the annotations:
 
-With these annotations you can use the `proto-db-translator` go package, to automatically apply the SQL create table statements, generate the basic CRUD operations, and even auto generate more advanced queries, all though automatic code generation.  
+With these annotations you can use the `proto-db-translator` (https://github.com/imran31415/proto-db-translator)  go package, to automatically apply the SQL create table statements, generate the basic CRUD operations, and even auto generate more advanced queries, all though automatic code generation.  
 
 
 ### Example usage of annotations:
@@ -97,7 +101,7 @@ translator, err := NewTranslator(DefaultMysqlConnection())  // current supported
 import "google.golang.org/protobuf/proto"
 dsn := "username:password!@tcp(localhost)/testDb" // database connection string
 translator.ValidateSchema(
-    []proto.Message{&userauth.User{}, &userauth.Role{}, &userauth.RoleHierarchy{}}, // ordering matters, i.e RoleHierarchy has a fk relationship to Role.  So Role must be first in the list so the schema is aware of it.   
+    []proto.Message{&userauth.User{}, &userauth.Role{}, &userauth.UserRole{}}, // ordering matters, i.e UserRole has a fk relationship to Role.  So Role must be first in the list so the schema is aware of it.   
     dsn,
 
 // you can also call translator.GenerateCreateTableStatement() to get the sql the annotations serialize to directly.   
