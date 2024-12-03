@@ -77,8 +77,6 @@ extend google.protobuf.FieldOptions {
   // Precision and scale for decimal types
   int32 db_precision = 50016; // Total number of digits
   int32 db_scale = 50017;     // Number of digits after the decimal point
-    // Multi-column UNIQUE constraints
-  repeated string db_unique_constraint = 50018;
 
   // General CHECK constraints (optional, if needed)
   repeated string db_check_constraint = 50019;
@@ -89,8 +87,11 @@ extend google.protobuf.FieldOptions {
   string db_collate = 50021;
   DbDefaultFunction db_default_function = 50022;
 
+}
 
-
+// Add a new message-level extension for composite unique constraints
+extend google.protobuf.MessageOptions {
+  repeated string db_unique_constraint = 50001; // Composite unique constraints
 }
 
 
