@@ -88,8 +88,8 @@ extend google.protobuf.FieldOptions {
 // Add a new message-level extension for composite unique constraints
 extend google.protobuf.MessageOptions {
   repeated string db_unique_constraint = 50023; // Composite unique constraints
-  repeated string db_composite_primary_key = 50024; // Composite primary keys
-  repeated string db_composite_index = 50025; // Composite index definitions
+  string db_composite_primary_key = 50024; // Composite primary keys
+  string db_composite_index = 50025; // Composite index definitions
   repeated string db_check_constraint = 50026;
 }
 
