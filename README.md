@@ -5,7 +5,7 @@ This package provides protobuf extension annotations.  These annotations allow u
 
 ## Build:
 
-````bash
+```bash
 ./generate.sh  # builds protos 
 ```
 
